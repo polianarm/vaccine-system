@@ -1,0 +1,9 @@
+mysql:
+  username: root
+  password: poli1234
+  host: localhost:3306
+  show-sql: true
+
+  #.yaml e .properties perfil/ profile {} application-${ALGUMA_COISA}.properties, a gente está
+  #indicando que temos algo que vai extender e substituir algo dentro dele. sobreescrevendo e o perfil é o dev, ai quando a gente inicia a aplicação a gente ve que muda o profile
+  #basicamente ele vai sobreescrever
