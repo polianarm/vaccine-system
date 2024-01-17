@@ -1,4 +1,4 @@
-package br.bonnasys.vaccines.domain;
+package br.bonnasys.vaccines.domain.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class Vaccine {
     private String id;
     private String name;
     private String producer;
-    private OffsetDateTime createAt;
-    private OffsetDateTime updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updatedAt;
 
 }

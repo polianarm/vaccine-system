@@ -1,8 +1,9 @@
-package br.bonnasys.vaccines.domain;
+package br.bonnasys.vaccines.domain.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -22,9 +23,14 @@ public class Patient {
     private String phone;
     private String email;
     private LocalDate birthdate;
-    private OffsetDateTime createAt; //yyyy-MM-ddTHH:mm:ss-Z 2024-01-11T20:59:00-03:00
-    private OffsetDateTime updateAt;
-    @OneToMany
-    @JoinColumn(foreignKey = @ForeignKey (name = "fk_vr_history"))
+    private OffsetDateTime createdAt; //yyyy-MM-ddTHH:mm:ss-Z 2024-01-11T20:59:00-03:00
+    private OffsetDateTime updatedAt;
+    @OneToMany(fetch = FetchType.EAGER) //mais profundo
+    //@JoinColumn(foreignKey = @ForeignKey (name = "fk_vr_history"))
     private Set<VaccineRegistration> history;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = OffsetDateTime.now();
+    }
 }
